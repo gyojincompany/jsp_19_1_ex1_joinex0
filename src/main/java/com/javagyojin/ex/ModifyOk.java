@@ -64,15 +64,14 @@ public class ModifyOk extends HttpServlet {
 		name = request.getParameter("name");
 		//id = request.getParameter("id");
 		id = (String)httpSession.getAttribute("id");
-		pw = request.getParameter("pw");
-		pw2 = (String)httpSession.getAttribute("pw");
+		pw = request.getParameter("pw");		
 		phone1 = request.getParameter("phone1");
 		phone2 = request.getParameter("phone2");
 		phone3 = request.getParameter("phone3");
 		gender = request.getParameter("gender");
 		
 		
-		if(pw2.equals(pw)) {
+		if(pwCheck()) {
 		
 			String query = "update members set name='" + name + "', phone1 = '" + phone1 + "', phone2 = '" + phone2 + "', phone3 = '" + phone3 + "', gender = '" + gender + "' where id='" + id + "'  ";
 			
@@ -111,5 +110,20 @@ public class ModifyOk extends HttpServlet {
 		}
 	
 	} 
+	
+	private boolean pwCheck() {
+		
+		boolean rs = false;
+		
+		String sessionPw = (String)httpSession.getAttribute("pw");
+		
+		if(sessionPw.equals(pw)) {
+			rs = true;
+		} else {
+			rs = false;
+		}
+		
+		return rs;
+	}
 	
 }
