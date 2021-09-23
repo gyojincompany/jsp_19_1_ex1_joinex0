@@ -59,6 +59,7 @@ public class ModifyOk extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		request.setCharacterEncoding("EUC-KR");
+		httpSession = request.getSession();
 		
 		name = request.getParameter("name");
 		//id = request.getParameter("id");
