@@ -73,19 +73,20 @@ public class LoginOk extends HttpServlet {
 			
 			while(resultSet.next()){
 				
-				String name = resultSet.getString("name");
-				String id = resultSet.getString("id");
-				String pw = resultSet.getString("pw");
-				String phone1 = resultSet.getString("phone1");
-				String phone2 = resultSet.getString("phone2");
-				String phone3 = resultSet.getString("phone3");
-				String gender = resultSet.getString("gender");
+				name = resultSet.getString("name");
+				id = resultSet.getString("id");
+				pw = resultSet.getString("pw");
+				phone1 = resultSet.getString("phone1");
+				phone2 = resultSet.getString("phone2");
+				phone3 = resultSet.getString("phone3");
+				gender = resultSet.getString("gender");
 			}
 			
 			HttpSession httpSession = request.getSession();//技记按眉 积己
+			httpSession.setAttribute("name", name);
 			httpSession.setAttribute("id", id);
 			httpSession.setAttribute("pw", pw);
-			httpSession.setAttribute("name", name);
+			
 			
 			response.sendRedirect("loginResult.jsp");
 			
